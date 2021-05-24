@@ -15,7 +15,7 @@ function printMessage(msg){
         computerMove = 'nozyce';
     }
     printMessage('Mój ruch to: ' + computerMove + '!');
-    
+
     let playerInput = prompt('Wybierz swój ruch! 1: kamień, 2: papier, 3: nozyce');
     console.log('Gracz wpisał: ' + playerInput);
     let playerMove = 'nieznany ruch';
@@ -29,6 +29,37 @@ function printMessage(msg){
         playerMove = 'nozyce';
     }
     printMessage('Zagrałem' + playerMove + '!');
+}
+
+if( computerMove == 'kamień' && playerMove == 'papier'){
+    printMessage('Ty wygrywasz!');
+}
+else if( computerMove == 'kamień' && playerMove == 'nozyce'){
+    printMessage('Komputer wygrywa!');
+}
+else if( computerMove == 'kamień' && playerMove == 'kamień'){
+    printMessage('Remis!');
+}
+else if( computerMove == 'papier' && playerMove == 'papier'){
+    printMessage('Remis!');
+}
+else if( computerMove == 'papier' && playerMove == 'nozyce'){
+    printMessage('Ty wygrywasz!');
+}
+else if( computerMove == 'papier' && playerMove == 'kamień'){
+    printMessage('Komputer wygrywa!');
+}
+else if( computerMove == 'nozyce' && playerMove == 'papier'){
+    printMessage('Komputer wygrywa!');
+}
+else if( computerMove == 'nozyce' && playerMove == 'nozyce'){
+    printMessage('Remis!');
+}
+else if( computerMove == 'nozyce' && playerMove == 'kamień'){
+    printMessage('Ty wygrywasz!');
+}
+else if(playerMove == 'nieznany ruch') {
+    printMessage('Wpisałeś niepoprawną wartość!');
 }
 
 function clearMessages(){
