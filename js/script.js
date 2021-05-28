@@ -1,3 +1,6 @@
+function playGame() {
+    let playerInput;
+
 window.onload = function() {
     game()
   };
@@ -38,7 +41,7 @@ function game()
     // }
     printMessage('Komputer: mój ruch to ' + computerMove + '!');
 
-    let playerInput = prompt('Wybierz swój ruch! 1: kamień, 2: papier, 3: nozyce');
+    //let playerInput = prompt('Wybierz swój ruch! 1: kamień, 2: papier, 3: nozyce');
     console.log('Gracz wpisał: ' + playerInput);
     let playerMove = getMoveName(playerInput);
     // if(playerInput == '1') {
@@ -55,6 +58,7 @@ function game()
 }
 
 function displayResult(argComputerMove, argPlayerMove) {
+    console.log('moves:', argComputerMove, argPlayerMove);
     printMessage('Komputer zagrał ' + argComputerMove + ', a Ty ' + argPlayerMove + '!');
     if( argComputerMove == 'kamień' && argPlayerMove == 'papier'){
         printMessage('Ty wygrywasz!');
@@ -92,3 +96,18 @@ function displayResult(argComputerMove, argPlayerMove) {
 function clearMessages(){
 	document.getElementById('messages').innerHTML = '';
 }
+}
+
+//playGame(3);
+
+document.getElementById('play-rock').addEventListener('click', function(){
+    printMessage('Zagrałeś kamień');
+});
+
+document.getElementById('play-paper').addEventListener('click', function(){
+    printMessage('Zagrałeś papier');
+});
+
+document.getElementById('play-scissors').addEventListener('click', function(){
+    printMessage('Zagrałeś nozyce');
+});
