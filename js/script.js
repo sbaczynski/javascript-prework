@@ -8,6 +8,19 @@ function clearMessages(){
     document.getElementById('messages').innerHTML = '';
 }
 
+let computerPoint = 0;
+let playerPoint = 0;
+
+function getLossMove(move) {
+    if(move === 'kamień') {
+        return 'papier';
+    } else if(move === 'papier') {
+        return 'nozyce';
+    } else if(move === 'nozyce') {
+        return 'kamień';
+    }
+}
+
 function playGame(playerInput) {
     clearMessages()
 
@@ -26,6 +39,15 @@ function playGame(playerInput) {
     }
 
     let randomNumber = Math.floor(Math.random() * 3 + 1);
+    if (computerPoint !== 0) {
+        const sumPoint = computerPoint+playerPoint;
+        const percent = computerPoint / sumPoint;
+
+        if(percent > 0.75) {
+            getLossMove();
+        }
+    }
+    
     console.log('Wylosowana liczba to: ' + randomNumber);
     let computerMove = getMoveName(randomNumber);
 
@@ -42,9 +64,11 @@ function playGame(playerInput) {
         printMessage('Komputer zagrał ' + argComputerMove + ', a Ty ' + argPlayerMove + '!');
         if( argComputerMove == 'kamień' && argPlayerMove == 'papier'){
             printMessage('Ty wygrywasz!');
+            playerPoint++;
         }
         else if( argComputerMove == 'kamień' && argPlayerMove == 'nozyce'){
             printMessage('Komputer wygrywa!');
+            computerPoint++;
         }
         else if( argComputerMove == 'kamień' && argPlayerMove == 'kamień'){
             printMessage('Remis!');
@@ -54,23 +78,28 @@ function playGame(playerInput) {
         }
         else if( argComputerMove == 'papier' && argPlayerMove == 'nozyce'){
             printMessage('Ty wygrywasz!');
+            playerPoint++;
         }
         else if( argComputerMove == 'papier' && argPlayerMove == 'kamień'){
             printMessage('Komputer wygrywa!');
+            computerPoint++;
         }
         else if( argComputerMove == 'nozyce' && argPlayerMove == 'papier'){
             printMessage('Komputer wygrywa!');
+            computerPoint++;
         }
         else if( argComputerMove == 'nozyce' && argPlayerMove == 'nozyce'){
             printMessage('Remis!');
         }
         else if( argComputerMove == 'nozyce' && argPlayerMove == 'kamień'){
             printMessage('Ty wygrywasz!');
+            playerPoint++;
         }
         else if(argPlayerMove == 'nieznany ruch') {
             printMessage('Wpisałeś niepoprawną wartość!');
             return 'nieznany ruch';
         }
+        printMessage('Komputer: ' + computerPoint + ', player: ' + playerPoint);
     }
 }
 
