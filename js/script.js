@@ -1,5 +1,5 @@
 function printMessage(msg){
-    let div = document.createElement('div');
+    const div = document.createElement('div');
     div.innerHTML = msg;
     document.getElementById('messages').appendChild(div);
 }
@@ -7,6 +7,7 @@ function printMessage(msg){
 function clearMessages(){
     document.getElementById('messages').innerHTML = '';
 }
+
 
 let computerPoint = 0;
 let playerPoint = 0;
@@ -38,7 +39,7 @@ function playGame(playerInput) {
         return 'nieznany ruch';
     }
 
-    let randomNumber = Math.floor(Math.random() * 3 + 1);
+    const randomNumber = Math.floor(Math.random() * 3 + 1);
     if (computerPoint !== 0) {
         const sumPoint = computerPoint+playerPoint;
         const percent = computerPoint / sumPoint;
@@ -49,12 +50,12 @@ function playGame(playerInput) {
     }
     
     console.log('Wylosowana liczba to: ' + randomNumber);
-    let computerMove = getMoveName(randomNumber);
+    const computerMove = getMoveName(randomNumber);
 
     printMessage('Komputer: mój ruch to ' + computerMove + '!');
 
     console.log('Gracz wpisał: ' + playerInput);
-    let playerMove = getMoveName(playerInput);
+    const playerMove = getMoveName(playerInput);
 
     printMessage('Gracz: zagrałem ' + playerMove + '!');
     displayResult(computerMove, playerMove);
